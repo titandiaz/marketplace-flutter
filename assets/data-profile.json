@@ -1,0 +1,41 @@
+{
+  "name" : "InfoProfile",
+  "data" : [
+      {
+          "option": "My Wishlist"
+      },
+      {
+          "option": "Orders"
+      },
+      {
+          "option": "Returns"
+      },
+      {
+          "option": "Sway Wallet"
+      },
+      {
+          "option": "Account Details"
+      },
+      {
+          "option": "Preferences"
+      },
+      {
+          "option": "Shipping Information"
+      },
+      {
+          "option": "Security"
+      },
+      {
+          "option": "FAQ"
+      },
+      {
+          "option": "Logout"
+      }
+  ],
+  "client" : [
+    {
+      "name" : "Kishore S",
+      "icon" : "account_circle"
+    }
+  ]
+}

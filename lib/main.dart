@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:peliculas/src/pages/home_page.dart';
+import 'package:peliculas/src/pages/profile_page.dart';
 import 'package:peliculas/src/pages/signIn.dart';
 import 'package:peliculas/src/pages/signUp.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
         'signIn': (BuildContext context) => LoginPage(),
         '/': (BuildContext context) => HomePage(user: null,),
         'signUp': (BuildContext context) => SignPage(),
+        'profile': (BuildContext context) => ProfilePage(),
       },
     );
   }

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:peliculas/src/pages/home_page.dart';
+import 'package:peliculas/src/pages/signUp.dart';
+
 
 
 class LoginPage extends StatefulWidget {
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -17,6 +20,7 @@ class _LoginPageState extends State<LoginPage> {
     // final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         titleSpacing: 0.0,
         title: Padding(
           padding: EdgeInsets.only(left: 40.0, top: 15),
@@ -36,7 +40,9 @@ class _LoginPageState extends State<LoginPage> {
           Padding(
             padding: EdgeInsets.only(right: 20.0, top: 15),
             child: FlatButton(
-              onPressed: () {},
+              onPressed: () {
+                navigateToSignUp();
+              },
               child: Container(
                 child: Text('SignUp',
                   style: TextStyle(
@@ -73,61 +79,8 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 30, top: 30),
-                    child: TextFormField(
-                      validator: (input) {
-                        if(input.isEmpty) {
-                          return 'Please type an email';
-                        }
-                      },
-                      onSaved: (input) => _email = input,
-                      decoration: InputDecoration(
-                        hintText: "enter your user",
-                        labelText: 'User',
-                        labelStyle: TextStyle(
-                          color: Color(0xFF2D2D2D),
-                          letterSpacing: 1.3
-                        ),
-                        contentPadding: EdgeInsets.all(17.0),
-                        border: OutlineInputBorder(
-                          // gapPadding: 0.0,
-                          borderRadius: BorderRadius.circular(4)
-                        )
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 0),
-                    child: TextFormField(
-                      validator: (input) {
-                        // print(error);
-                        if(input.isEmpty) {
-                          return 'Please type your password';
-                        } else if(input.length < 6) {
-                          return 'Your password needs to be atleast 6 characters';
-                        } else if(error != '' ) {
-                          error = '';
-                          return 'La contraseña es incorrecta';
-                        }
-                      },
-                      onSaved: (input) => _password = input,
-                      decoration: InputDecoration(
-                        hintText: "enter your password",
-                        labelText: 'Password',
-                        labelStyle: TextStyle(
-                          color: Color(0xFF2D2D2D),
-                          letterSpacing: 1.3
-                        ),
-                        contentPadding: EdgeInsets.all(17.0),
-                        border: OutlineInputBorder(
-                          // gapPadding: 0.0,
-                          borderRadius: BorderRadius.circular(4)
-                        )
-                      ),
-                      obscureText: true,
-                    ),
-                  ),
+                  _crearEmail(context),
+                  _crearPassword(context),
                   Container (
                     padding: EdgeInsets.only(top: 29.0),
                     child: RaisedButton(
@@ -176,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                     padding: EdgeInsets.only(top: 35.0),
                     child: FlatButton(
                       onPressed: () {
-                        signIn();
+                        // signIn();
                       },
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
@@ -212,6 +165,72 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+Widget _crearEmail(BuildContext context) {
+
+  return Padding(
+    padding: EdgeInsets.only(bottom: 30, top: 30),
+    child: TextFormField(
+      validator: (input) {
+        if(input.isEmpty) {
+          return 'Please type an email';
+        }
+      },
+      onSaved: (input) => _email = input,
+      decoration: InputDecoration(
+        hintText: "ejemplo@correo.com",
+        labelText: 'Correo electrónico',
+        labelStyle: TextStyle(
+          color: Color(0xFF2D2D2D),
+          letterSpacing: 1.3
+        ),
+        contentPadding: EdgeInsets.all(17.0),
+        border: OutlineInputBorder(
+          // gapPadding: 0.0,
+          borderRadius: BorderRadius.circular(4)
+        )
+      ),
+    ),
+  );
+
+}
+
+Widget _crearPassword(BuildContext context) {
+
+  return Padding(
+    padding: EdgeInsets.only(bottom: 0),
+    child: TextFormField(
+      validator: (input) {
+        // print(error);
+        if(input.isEmpty) {
+          return 'Please type your password';
+        } else if(error != '' ) {
+          error = '';
+          return 'La contraseña es incorrecta';
+        }
+      },
+      onSaved: (input) => _password = input,
+      decoration: InputDecoration(
+        hintText: "enter your password",
+        labelText: 'Password',
+        labelStyle: TextStyle(
+          color: Color(0xFF2D2D2D),
+          letterSpacing: 1.3
+        ),
+        contentPadding: EdgeInsets.all(17.0),
+        border: OutlineInputBorder(
+          // gapPadding: 0.0,
+          borderRadius: BorderRadius.circular(4)
+        )
+      ),
+      obscureText: true,
+    ),
+  );
+
+}
+
+
+
+
   Future<void> signIn() async {
     final formState = _formKey.currentState;
     if(formState.validate()) {
@@ -223,7 +242,35 @@ class _LoginPageState extends State<LoginPage> {
         error = e.message;
         print(e.message);
       }
+    } else {
+      mostrarAlerta( context, 'Los datos son incorrectos');
     }
+  }
+
+  void mostrarAlerta( BuildContext context, String mensaje) {
+    showDialog(
+      context: context,
+      builder: ( context ) {
+        return AlertDialog(
+          title: Text('Información incorrecta'),
+          content: Text(mensaje),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Ok'),
+              onPressed: () => Navigator.of(context).pop(),
+            )
+          ],
+        );
+      }
+    );
+  }
+
+  void navigateToSignUp(){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => SignPage(), fullscreenDialog: true));
+  }
+
+  void navigateToSignIn(){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage(), fullscreenDialog: true));
   }
 
   // void signIn() async {
@@ -242,3 +289,4 @@ class _LoginPageState extends State<LoginPage> {
 //     return SingleChildScrollView()
 //   }
 }
+

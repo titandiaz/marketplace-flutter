@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "841903087987",
+    "firebase_url": "https://testing2-f5201.firebaseio.com",
+    "project_id": "testing2-f5201",
+    "storage_bucket": "testing2-f5201.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841903087987:android:d54867d53c77e553516506",
+        "android_client_info": {
+          "package_name": "com.example.flutter_vscode"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "841903087987-efhbjtnu1ptqj0ud0sspbpscm8o3le4h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0fIySIui9WlTy3tny_gup8hNfaITzFfE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "841903087987-efhbjtnu1ptqj0ud0sspbpscm8o3le4h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841903087987:android:63631b9ce797404e516506",
+        "android_client_info": {
+          "package_name": "com.example.peliculas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "841903087987-efhbjtnu1ptqj0ud0sspbpscm8o3le4h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0fIySIui9WlTy3tny_gup8hNfaITzFfE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "841903087987-efhbjtnu1ptqj0ud0sspbpscm8o3le4h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

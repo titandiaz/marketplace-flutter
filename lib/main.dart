@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:peliculas/src/pages/home_page.dart';
+import 'package:peliculas/src/pages/signIn.dart';
+import 'package:peliculas/src/pages/signUp.dart';
+
  
 void main() => runApp(MyApp());
  
 class MyApp extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Peliculas',
-      initialRoute: '',
+      title: 'MarketPlace',
+      initialRoute: 'signIn',
       routes: {
-        '/': (BuildContext context) => HomePage(),
+        'signIn': (BuildContext context) => LoginPage(),
+        '/': (BuildContext context) => HomePage(user: null,),
+        'signUp': (BuildContext context) => SignPage(),
       },
     );
   }

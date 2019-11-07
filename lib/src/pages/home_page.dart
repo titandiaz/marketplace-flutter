@@ -2,11 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:peliculas/src/providers/productos_provider.dart';
 import 'package:peliculas/src/widgets/banner_swiper_widget.dart';
 import 'package:peliculas/src/widgets/productos_horizontal.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 // api-marketplace.komercia.co/api/products/by/city/1
 // foto_cloudinary
 
 class HomePage extends StatelessWidget {
+
+  HomePage({
+    Key key, 
+    @required this.user
+    }) : super(key: key);
+  final AuthResult user;
+
   final productosProvider = new ProductosProvider();
+
 
   @override
   Widget build(BuildContext context) {

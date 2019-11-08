@@ -20,8 +20,8 @@ class _SignPageState extends State<SignPage> {
 
 
   _printLatestValue() {
-  // print("Second text field: ${myController.text}");
-  // print('nada');
+    // print("Second text field: ${myController.text}");
+    // print(myController.text);
   }
   
 
@@ -204,17 +204,15 @@ Widget _crearPassword(BuildContext context) {
     child: TextFormField(
       controller: myController,
       validator: (input) {
-        // print(error);
+        // print(myController.text);
         if(input.isEmpty) {
           return 'Please type your password';
         } else if(input.length < 6) {
           return 'Your password needs to be atleast 6 characters';
         } 
-        print(_password);
       },
       onSaved: (input) {
         _password = input;
-        // print(input);
       },
       decoration: InputDecoration(
         hintText: "enter your password",
@@ -241,9 +239,8 @@ Widget _crearConfirmPassword(BuildContext context) {
     padding: EdgeInsets.only(bottom: 20),
     child: TextFormField(
       validator: (input) {
-        print(_password);
-        print("Second text field: ${myController.text}");
-        if(input == _password) {
+        // print("Second text field: ${myController.text}");
+        if(input == myController.text) {
           // return 'Bien';
         } else {
           return 'Tu contraseña debe coincidir';

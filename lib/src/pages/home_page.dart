@@ -7,10 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 // foto_cloudinary
 
 class HomePage extends StatelessWidget {
-
-
   final productosProvider = new ProductosProvider();
-
 
   @override
   Widget build(BuildContext context) {
@@ -19,21 +16,21 @@ class HomePage extends StatelessWidget {
         title: Text('Komercia', style: TextStyle(color: Colors.black87)),
         backgroundColor: Colors.white,
         leading: IconButton(
-            icon: Icon(Icons.menu),
-            color: Colors.black87,
-            onPressed: (){},
-          ),
+          icon: Icon(Icons.menu),
+          color: Colors.black87,
+          onPressed: () {},
+        ),
         elevation: 0.0,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.notifications_none),
             color: Colors.black87,
-            onPressed: (){},
+            onPressed: () {},
           ),
           IconButton(
             icon: Icon(Icons.search),
             color: Colors.black87,
-            onPressed: (){},
+            onPressed: () {},
           )
         ],
       ),
@@ -50,21 +47,25 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _swiperBanner() {
-
-    return BannerSwiper(banners: [1,2,3]);
+    return BannerSwiper(banners: [1, 2, 3]);
   }
 
   Widget _swiperProducts(BuildContext context) {
     return Container(
       width: double.infinity,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text('Productos', style: Theme.of(context).textTheme.subhead),
+          Container(
+            padding: EdgeInsets.only(left: 20.0, top: 30.0, bottom: 10.0),
+            child: Text('Lo nuevo', style: Theme.of(context).textTheme.title),
+          ),
+          SizedBox(height: 15.0),
           FutureBuilder(
             future: productosProvider.getByCity(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
-                return ProductosHorizontal( productos: snapshot.data );
+                return ProductosHorizontal(productos: snapshot.data);
               } else {
                 return Center(child: CircularProgressIndicator());
               }

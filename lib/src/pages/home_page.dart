@@ -8,11 +8,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class HomePage extends StatelessWidget {
 
-  HomePage({
-    Key key, 
-    @required this.user
-    }) : super(key: key);
-  final AuthResult user;
 
   final productosProvider = new ProductosProvider();
 

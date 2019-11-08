@@ -1,8 +1,16 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:peliculas/src/providers/menu_provider.dart';
 
 
 class ProfilePage extends StatefulWidget {
+  
+  ProfilePage({
+    Key key, 
+    @required this.user
+    }) : super(key: key);
+  final AuthResult user;
+
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
@@ -18,13 +26,14 @@ class _ProfilePageState extends State<ProfilePage> {
           titleSpacing: 0.0,
           title: ListTile(
             title: Padding(
-              padding: EdgeInsets.only(left: 0.0, top: 0, bottom: 10),
+              padding: EdgeInsets.only(left: 0.0, top: 0, bottom: 0),
               child: Container(
-                child: Text('Login',
+                child: Text('${widget.user.user.displayName}',
                   style: TextStyle(
                     color: Color(0xFF2D2D2D),
                     fontSize: 22.0,
                     fontFamily: "SF Pro Display",
+                    backgroundColor: Colors.red,
                   )
                 )
               ),

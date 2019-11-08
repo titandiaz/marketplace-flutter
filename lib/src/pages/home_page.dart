@@ -11,6 +11,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    productosProvider.getByPage();
     return Scaffold(
       appBar: AppBar(
         title: Text('Komercia', style: TextStyle(color: Colors.black87)),
@@ -61,11 +62,14 @@ class HomePage extends StatelessWidget {
             child: Text('Lo nuevo', style: Theme.of(context).textTheme.title),
           ),
           SizedBox(height: 15.0),
-          FutureBuilder(
-            future: productosProvider.getByCity(),
+          StreamBuilder(
+            stream: productosProvider.productosStream,
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
-                return ProductosHorizontal(productos: snapshot.data);
+                return ProductosHorizontal(
+                  productos: snapshot.data,
+                  siguientePagina: productosProvider.getByPage,
+                );
               } else {
                 return Center(child: CircularProgressIndicator());
               }

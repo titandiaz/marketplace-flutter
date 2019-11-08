@@ -16,13 +16,15 @@ class SignPage extends StatefulWidget {
 
 class _SignPageState extends State<SignPage> {
 
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
   final myController = TextEditingController();
 
 
-  _printLatestValue() {
-    // print("Second text field: ${myController.text}");
-    // print(myController.text);
-  }
+  // _printLatestValue() {
+  //   // print("Second text field: ${myController.text}");
+  //   // print(myController.text);
+  // }
   
 
   // @override
@@ -234,7 +236,6 @@ Widget _crearPassword(BuildContext context) {
 }
 
 Widget _crearConfirmPassword(BuildContext context) {
-
   return Padding(
     padding: EdgeInsets.only(bottom: 20),
     child: TextFormField(
@@ -315,7 +316,7 @@ Widget _crearCiudad(BuildContext context) {
     if(_formKey.currentState.validate()){
       _formKey.currentState.save();
       try{
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _email, password: _password);
+        await createUserWithEmailAndPassword( _email, _password, _userName);
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
         
       }catch(e){
@@ -323,6 +324,25 @@ Widget _crearCiudad(BuildContext context) {
         print(e.message);
       }
     }
+  }
+
+  Future<String> createUserWithEmailAndPassword(String email, String password,
+      String name) async {
+    final authResult = await _firebaseAuth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+
+    // Update the username
+    await updateUserName(name, authResult.user);
+    return authResult.user.uid;
+  }
+
+  Future updateUserName(String name, FirebaseUser currentUser) async {
+    var userUpdateInfo = UserUpdateInfo();
+    userUpdateInfo.displayName = name;
+    await currentUser.updateProfile(userUpdateInfo);
+    await currentUser.reload();
   }
 
   // void mostrarAlerta( BuildContext context, String mensaje) {

@@ -22,26 +22,38 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(80.0), // here the desired height
         child: AppBar(
-          automaticallyImplyLeading: false,
           titleSpacing: 0.0,
-          title: ListTile(
-            title: Padding(
-              padding: EdgeInsets.only(left: 0.0, top: 0, bottom: 0),
-              child: Container(
-                child: Text('${widget.user.user.displayName}',
+          automaticallyImplyLeading: false,
+          flexibleSpace: Padding(
+            padding: EdgeInsets.only(left: 10.0),
+            child: Container(
+              transform: Matrix4.translationValues(0.0, 0.0, 0.0),
+              child: ListTile(
+                title: Padding(
+                  padding: EdgeInsets.only(left: 0.0, top: 36, bottom: 0),
+                  child: Container(
+                    padding: EdgeInsets.only(left: 0.0, top: 0, bottom: 5),
+                    child: Text('${widget.user.user.displayName}',
+                      style: TextStyle(
+                        color: Color(0xFF2D2D2D),
+                        fontSize: 22.0,
+                        fontFamily: "SF Pro Display",
+                        backgroundColor: Colors.transparent,
+                      )
+                    )
+                  ),
+                ),
+                subtitle: Text('View Profile',
                   style: TextStyle(
-                    color: Color(0xFF2D2D2D),
-                    fontSize: 22.0,
-                    fontFamily: "SF Pro Display",
-                    backgroundColor: Colors.red,
-                  )
-                )
+                    color: Color(0xFFE4E1E3),
+                  ),
+                ),
               ),
             ),
-            subtitle: Text('nada'),
-          ),
+            
+          ),         
           elevation: 0.0,
-          // backgroundColor: Colors.transparent,
+          backgroundColor: Colors.transparent,
         ),
       ),
       body: _lista(),
@@ -76,18 +88,40 @@ class _ProfilePageState extends State<ProfilePage> {
     final List<Widget> opciones = [];
 
     data.forEach( (opt) {
+      final widgetTemp = Container( 
+        padding: EdgeInsets.only(right: 20.0, left: 10.0),
+        child: Column(
+          children: <Widget>[
+            ListTile(
+              title: Container(
+                child: Text( opt['option'],
+                )
+              ),
+              // leading: Icon(Icons.account_circle, color: Colors.blue),
+              trailing: Icon(Icons.keyboard_arrow_right, color: Colors.black),
+              onTap: () {
 
-      final widgetTemp = ListTile(
-        title: Text( opt['option']),
-        leading: Icon(Icons.account_circle, color: Colors.blue),
-        trailing: Icon(Icons.keyboard_arrow_right, color: Colors.blue),
-        onTap: () {
-
-        },
+              },
+            ),
+            Divider()
+          ],
+        ),
+        
       );
+      // ListTile(
+      //   title: Container(
+      //     padding: EdgeInsets.only(right: 40.0, left: 40.0),
+      //     child: Text( opt['option'],
+      //     )
+      //   ),
+      //   // leading: Icon(Icons.account_circle, color: Colors.blue),
+      //   trailing: Icon(Icons.keyboard_arrow_right, color: Colors.blue),
+      //   onTap: () {
 
-      opciones..add( widgetTemp)
-              ..add( Divider());
+      //   },
+      // );
+      opciones.add( widgetTemp);
+              // ..add( Divider());
     });
     return opciones;
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:peliculas/src/pages/home_page.dart';
-import 'package:peliculas/src/pages/profile_page.dart';
+// import 'package:peliculas/src/pages/profile_page.dart';
 import 'package:peliculas/src/pages/signUp.dart';
 
 

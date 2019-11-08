@@ -35,15 +35,23 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
-      body: Container(
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.spaceAround,
+      body: Center(
+        child: ListView(
           children: <Widget>[
             _swiperBanner(),
             _swiperProducts(context),
           ],
         ),
-      ),
+      )
+      // Container(
+      //   child: Column(
+      //     // mainAxisAlignment: MainAxisAlignment.spaceAround,
+      //     children: <Widget>[
+      //       _swiperBanner(),
+      //       _swiperProducts(context),
+      //     ],
+      //   ),
+      // ),
     );
   }
 

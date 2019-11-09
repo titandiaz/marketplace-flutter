@@ -207,7 +207,7 @@ Widget _crearPassword(BuildContext context) {
           return 'Please type your password';
         } else if(error != '' ) {
           error = '';
-          return 'La contraseña es incorrecta';
+          return 'Invalid user o password';
         }
       },
       onSaved: (input) => _password = input,
@@ -246,7 +246,7 @@ Widget _crearPassword(BuildContext context) {
         print(e.message);
       }
     } else {
-      mostrarAlerta( context, 'Los datos son incorrectos');
+      mostrarAlerta( context, 'Los datos son incorrectos' );
     }
   }
 

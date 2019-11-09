@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:peliculas/src/pages/cart_page.dart';
 import 'package:peliculas/src/pages/home_page.dart';
 import 'package:peliculas/src/pages/profile_page.dart';
 import 'package:peliculas/src/pages/signIn.dart';
@@ -15,12 +16,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'MarketPlace',
-      initialRoute: 'signIn',
+      initialRoute: 'cart',
       routes: {
         'signIn': (BuildContext context) => LoginPage(),
         '/': (BuildContext context) => HomePage(),
         'signUp': (BuildContext context) => SignPage(),
         'profile': (BuildContext context) => ProfilePage(user: null,),
+        'cart': (BuildContext context) => CartPage(),
       },
     );
   }

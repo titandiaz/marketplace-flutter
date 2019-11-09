@@ -239,8 +239,8 @@ Widget _crearPassword(BuildContext context) {
       formState.save();
       try {
         AuthResult user = await FirebaseAuth.instance.signInWithEmailAndPassword( email: _email, password: _password );
-        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage(user: user,)));
-        // Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+        // Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage(user: user,)));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
       } catch (e) {
         error = e.message;
         print(e.message);

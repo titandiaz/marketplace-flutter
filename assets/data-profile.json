@@ -2,34 +2,44 @@
   "name" : "InfoProfile",
   "data" : [
       {
-          "option": "My Wishlist"
+        "ruta": "wishlistPage",
+        "option": "My Wishlist"
       },
       {
-          "option": "Orders"
+        "ruta": "wishlistPage",
+        "option": "Orders"
       },
       {
-          "option": "Returns"
+        "ruta": "wishlistPage",
+        "option": "Returns"
       },
       {
-          "option": "Sway Wallet"
+        "ruta": "wishlistPage",
+        "option": "Sway Wallet"
       },
       {
-          "option": "Account Details"
+        "ruta": "wishlistPage",
+        "option": "Account Details"
       },
       {
-          "option": "Preferences"
+        "ruta": "wishlistPage",
+        "option": "Preferences"
       },
       {
-          "option": "Shipping Information"
+        "ruta": "wishlistPage",
+        "option": "Shipping Information"
       },
       {
-          "option": "Security"
+        "ruta": "wishlistPage",
+        "option": "Security"
       },
       {
-          "option": "FAQ"
+        "ruta": "wishlistPage",
+        "option": "FAQ"
       },
       {
-          "option": "Logout"
+        "ruta": "signIn",
+        "option": "Logout"
       }
   ],
   "client" : [

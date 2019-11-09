@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:peliculas/src/pages/signIn.dart';
 import 'package:peliculas/src/providers/menu_provider.dart';
+import 'package:peliculas/src/utils/icono_string_util.dart';
 
 
 class ProfilePage extends StatefulWidget {
@@ -20,7 +22,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(80.0), // here the desired height
+        preferredSize: Size.fromHeight(90.0), // here the desired height
         child: AppBar(
           titleSpacing: 0.0,
           automaticallyImplyLeading: false,
@@ -30,7 +32,7 @@ class _ProfilePageState extends State<ProfilePage> {
               transform: Matrix4.translationValues(0.0, 0.0, 0.0),
               child: ListTile(
                 title: Padding(
-                  padding: EdgeInsets.only(left: 0.0, top: 36, bottom: 0),
+                  padding: EdgeInsets.only(left: 0.0, top: 45, bottom: 0),
                   child: Container(
                     padding: EdgeInsets.only(left: 0.0, top: 0, bottom: 5),
                     child: Text('${widget.user.user.displayName}',
@@ -48,10 +50,16 @@ class _ProfilePageState extends State<ProfilePage> {
                     color: Color(0xFFE4E1E3),
                   ),
                 ),
+                trailing: Padding(
+                  padding: EdgeInsets.only(right: 0, top: 0),
+                  child: Container(
+                    padding: EdgeInsets.only(right: 15, top: 25),
+                    child: getIcon('account_circle'),
+                  ),
+                ),
               ),
-            ),
-            
-          ),         
+            ), 
+          ),
           elevation: 0.0,
           backgroundColor: Colors.transparent,
         ),
@@ -62,25 +70,17 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget _lista() {
 
-    // menuProvider.cargarData()
     return FutureBuilder(
       future: menuProvider.cargarData(),
       initialData: [],
       builder: ( context, AsyncSnapshot<List<dynamic>> snapshot ) {
 
-
         return ListView(
           children: _listaItems(snapshot.data),
         );
         
-
       },
     );
-
-    // return ListView(
-    //   children: _listaItems(),
-    // );
-
   }
 
   List<Widget> _listaItems( List<dynamic> data) {
@@ -89,17 +89,22 @@ class _ProfilePageState extends State<ProfilePage> {
 
     data.forEach( (opt) {
       final widgetTemp = Container( 
-        padding: EdgeInsets.only(right: 20.0, left: 10.0),
+        padding: EdgeInsets.only(right: 10.0, left: 10.0),
         child: Column(
           children: <Widget>[
             ListTile(
               title: Container(
                 child: Text( opt['option'],
+                 style: TextStyle(
+                   fontSize: 16,
+                 ),
                 )
               ),
               // leading: Icon(Icons.account_circle, color: Colors.blue),
-              trailing: Icon(Icons.keyboard_arrow_right, color: Colors.black),
+              trailing: Icon(Icons.keyboard_arrow_right, color: Colors.black, size: 30,),
               onTap: () {
+                
+                Navigator.pushNamed(context, opt['ruta'] );
 
               },
             ),
@@ -108,21 +113,11 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         
       );
-      // ListTile(
-      //   title: Container(
-      //     padding: EdgeInsets.only(right: 40.0, left: 40.0),
-      //     child: Text( opt['option'],
-      //     )
-      //   ),
-      //   // leading: Icon(Icons.account_circle, color: Colors.blue),
-      //   trailing: Icon(Icons.keyboard_arrow_right, color: Colors.blue),
-      //   onTap: () {
-
-      //   },
-      // );
-      opciones.add( widgetTemp);
+      opciones..add( widgetTemp);
               // ..add( Divider());
     });
     return opciones;
   }
+
+
 }

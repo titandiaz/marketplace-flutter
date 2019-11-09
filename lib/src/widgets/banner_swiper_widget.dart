@@ -16,7 +16,7 @@ class BannerSwiper extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      height: 290.0,
+      height: 220.0,
       child: Swiper(
         itemBuilder: (BuildContext context, int index){
           // return new Image.network('http://via.placeholder.com/350x250', fit: BoxFit.cover);

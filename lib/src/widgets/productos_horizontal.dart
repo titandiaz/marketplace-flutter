@@ -24,8 +24,8 @@ class ProductosHorizontal extends StatelessWidget {
     });
 
     return Container(
-      // height: 180.0,
-      height: _screenSize.height * 0.3,
+      height: 210.0,
+      // height: _screenSize.height * 0.35,
       child: PageView.builder(
         pageSnapping: false,
         controller: _pageController,
@@ -49,7 +49,7 @@ class ProductosHorizontal extends StatelessWidget {
                 image: NetworkImage(producto.getFotoCloudinary()),
                 placeholder: AssetImage('assets/img/no-image.jpg'),
                 fit: BoxFit.cover,
-                height: 180.0,
+                height: 160.0,
               ),
             ),
             SizedBox(height: 5.0),

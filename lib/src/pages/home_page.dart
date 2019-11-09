@@ -40,6 +40,7 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             _swiperBanner(),
             _swiperProducts(context),
+            _swiperBanner(),
           ],
         ),
       )
@@ -66,7 +67,7 @@ class HomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            padding: EdgeInsets.only(left: 20.0, top: 30.0, bottom: 10.0),
+            padding: EdgeInsets.only(left: 20.0, top: 25.0, bottom: 10.0),
             child: Text('Lo nuevo', style: Theme.of(context).textTheme.title),
           ),
           SizedBox(height: 15.0),

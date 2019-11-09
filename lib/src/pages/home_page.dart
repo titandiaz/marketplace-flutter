@@ -43,7 +43,27 @@ class HomePage extends StatelessWidget {
             _swiperBanner(),
           ],
         ),
-      )
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            title: Text('Home')
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_basket),
+            title: Text('Carrito')
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.star),
+            title: Text('Favoritos')
+          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.shopping_basket),
+          //   title: Text('Home')
+          // ),
+        ],
+      ),
       // Container(
       //   child: Column(
       //     // mainAxisAlignment: MainAxisAlignment.spaceAround,

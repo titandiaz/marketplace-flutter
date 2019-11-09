@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       initialRoute: 'signIn',
       routes: {
         'signIn': (BuildContext context) => LoginPage(),
-        '/': (BuildContext context) => HomePage(),
+        '/': (BuildContext context) => HomePage(user: null),
         'signUp': (BuildContext context) => SignPage(),
         'profile': (BuildContext context) => ProfilePage(user: null,),
       },

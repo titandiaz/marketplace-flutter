@@ -1,27 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:peliculas/src/pages/profile_page.dart';
 import 'package:peliculas/src/providers/productos_provider.dart';
 import 'package:peliculas/src/widgets/banner_swiper_widget.dart';
 import 'package:peliculas/src/widgets/productos_horizontal.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 // api-marketplace.komercia.co/api/products/by/city/1
 // foto_cloudinary
 
 class HomePage extends StatelessWidget {
+
+  HomePage({ @required this.user });
+  final AuthResult user;
   final productosProvider = new ProductosProvider();
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     productosProvider.getByPage();
     return Scaffold(
       appBar: AppBar(
         title: Text('Komercia', style: TextStyle(color: Colors.black87)),
         backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: Icon(Icons.menu),
-          color: Colors.black87,
-          onPressed: () {},
-        ),
+        // leading: IconButton(
+        //   icon: Icon(Icons.menu),
+        //   color: Colors.black87,
+        //   onPressed: () {},
+        // ),
         elevation: 0.0,
+        iconTheme: new IconThemeData(color: Colors.black),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.notifications_none),
@@ -34,6 +40,12 @@ class HomePage extends StatelessWidget {
             onPressed: () {},
           )
         ],
+      ),
+      drawer: SizedBox(
+        width: size.width,
+        child: Container(
+          child: ProfilePage(user: user,),
+        ),
       ),
       body: Center(
         child: ListView(
@@ -97,6 +109,7 @@ class HomePage extends StatelessWidget {
         primaryColor: Colors.black
       ),
       child: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         // backgroundColor: Colors.transparent,
         items: [
           BottomNavigationBarItem(
@@ -106,6 +119,10 @@ class HomePage extends StatelessWidget {
           BottomNavigationBarItem(
             icon: Icon(const IconData(0xe805, fontFamily: 'MyFlutterApp'), size: 20.0,),
             title: Text('Carrito', style: TextStyle(fontSize: 13),)
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(const IconData(0xe808, fontFamily: 'MyFlutterApp'), size: 20.0,),
+            title: Text('Favoritos', style: TextStyle(fontSize: 13),)
           ),
           BottomNavigationBarItem(
             icon: Icon(const IconData(0xe806, fontFamily: 'MyFlutterApp'), size: 20.0,),

@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       initialRoute: 'cart',
       routes: {
         'signIn': (BuildContext context) => LoginPage(),
-        '/': (BuildContext context) => HomePage(),
+        '/': (BuildContext context) => HomePage(user: null),
         'signUp': (BuildContext context) => SignPage(),
         'profile': (BuildContext context) => ProfilePage(user: null,),
         'cart': (BuildContext context) => CartPage(),

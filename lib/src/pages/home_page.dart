@@ -44,26 +44,7 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home')
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_basket),
-            title: Text('Carrito')
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.star),
-            title: Text('Favoritos')
-          ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.shopping_basket),
-          //   title: Text('Home')
-          // ),
-        ],
-      ),
+      bottomNavigationBar: _botttomNavigationBar(context)
       // Container(
       //   child: Column(
       //     // mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -103,6 +84,32 @@ class HomePage extends StatelessWidget {
                 return Center(child: CircularProgressIndicator());
               }
             },
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _botttomNavigationBar(BuildContext context) {
+    return Theme(
+      data: Theme.of(context).copyWith(
+        // canvasColor: Colors.transparent,
+        primaryColor: Colors.black
+      ),
+      child: BottomNavigationBar(
+        // backgroundColor: Colors.transparent,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(const IconData(0xe804, fontFamily: 'MyFlutterApp'), size: 20.0,),
+            title: Text('Inicio', style: TextStyle(fontSize: 13),)
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(const IconData(0xe805, fontFamily: 'MyFlutterApp'), size: 20.0,),
+            title: Text('Carrito', style: TextStyle(fontSize: 13),)
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(const IconData(0xe806, fontFamily: 'MyFlutterApp'), size: 20.0,),
+            title: Text('Perfil', style: TextStyle(fontSize: 13),)
           ),
         ],
       ),

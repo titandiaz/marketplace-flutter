@@ -46,24 +46,28 @@
     {
       "name" : "Kishore S",
       "icon" : "account_circle"
+    },
+    {
+      "name" : "Kishore S",
+      "icon" : "account_box"
     }
   ],
   "product" : [
     {
-      "image" : "nada",
+      "image" : "assets/Group7.png",
       "price" : "129",
       "name"  : "Crimson Swade",
       "color" : "White",
       "size"  : "XXL",
-      "quanty": "2s"
+      "quanty": "2"
     },
     {
-      "image" : "nada",
+      "image" : "assets/Group8.png",
       "price" : "129",
       "name"  : "Crimson Swade",
       "color" : "White",
       "size"  : "XXL",
-      "quanty": "2s"
+      "quanty": "2"
     }
   ]
 }

@@ -7,10 +7,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 // api-marketplace.komercia.co/api/products/by/city/1
 // foto_cloudinary
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
 
   HomePage({ @required this.user });
   final AuthResult user;
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int currentIndex = 0;
   final productosProvider = new ProductosProvider();
 
   @override
@@ -42,20 +49,12 @@ class HomePage extends StatelessWidget {
         ],
       ),
       drawer: SizedBox(
-        width: size.width,
+        width: size.width - 100.0,
         child: Container(
-          child: ProfilePage(user: user,),
+          child: ProfilePage(user: widget.user,),
         ),
       ),
-      body: Center(
-        child: ListView(
-          children: <Widget>[
-            _swiperBanner(),
-            _swiperProducts(context),
-            _swiperBanner(),
-          ],
-        ),
-      ),
+      body: _callPage(context, currentIndex),
       bottomNavigationBar: _botttomNavigationBar(context)
       // Container(
       //   child: Column(
@@ -67,6 +66,31 @@ class HomePage extends StatelessWidget {
       //   ),
       // ),
     );
+  }
+
+  Widget _callPage(BuildContext context, int paginaActual) {
+    switch (paginaActual) {
+      case 0: return Center(
+        child: ListView(
+          children: <Widget>[
+            _swiperBanner(),
+            _swiperProducts(context),
+            _swiperBanner(),
+          ],
+        ),
+      );
+      case 3 : return ProfilePage(user: widget.user);
+      
+      default: return Center(
+        child: ListView(
+          children: <Widget>[
+            _swiperBanner(),
+            _swiperProducts(context),
+            _swiperBanner(),
+          ],
+        ),
+      );
+    }
   }
 
   Widget _swiperBanner() {
@@ -105,10 +129,16 @@ class HomePage extends StatelessWidget {
   Widget _botttomNavigationBar(BuildContext context) {
     return Theme(
       data: Theme.of(context).copyWith(
-        // canvasColor: Colors.transparent,
-        primaryColor: Colors.black
+        primaryColor: Colors.black,
+        textTheme: Theme.of(context).textTheme.copyWith(caption: TextStyle(color: Colors.black26))
       ),
       child: BottomNavigationBar(
+        currentIndex: currentIndex,
+        onTap: (index){
+          setState(() {
+            currentIndex = index;
+          });
+        },
         type: BottomNavigationBarType.fixed,
         // backgroundColor: Colors.transparent,
         items: [

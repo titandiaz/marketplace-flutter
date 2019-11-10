@@ -33,7 +33,7 @@ class _CartPageState extends State<CartPage> {
             children: <Widget>[
               Container(
                 transform: Matrix4.translationValues(0.0, 0.0, 0.0),
-                padding: EdgeInsets.only(top: 45.0, left: 30, bottom: 41),
+                padding: EdgeInsets.only(top: 25.0, left: 30, bottom: 41),
                 child: Text('Subtotal:',
                   style: TextStyle(
                     color: Color(0xFF9B9B9B), 
@@ -43,7 +43,7 @@ class _CartPageState extends State<CartPage> {
                 ),
               ),
               Container (
-                padding: EdgeInsets.only(top: 45.0, right: 27, bottom: 41),
+                padding: EdgeInsets.only(top: 25.0, right: 27, bottom: 41),
                 child: RaisedButton(
                   onPressed: () {},
                   shape: RoundedRectangleBorder(
@@ -82,12 +82,17 @@ class _CartPageState extends State<CartPage> {
     data.forEach( (opt) {
       final widgetTempP = Container( 
         padding: EdgeInsets.only(right: 27, left: 31.0),
+        transform: Matrix4.translationValues(0.0, 10.0, 0.0),
         // color: Colors.red,
         child: Container(
-          padding: EdgeInsets.only(top: 30),
+          // padding: EdgeInsets.only(top: 10),
           // color: Colors.blue,
           child: Column(
             children: <Widget>[
+              Container(
+                padding: EdgeInsets.only(right: 27, left: 31.0, top: 5, bottom: 5),
+                // color: Colors.red,
+              ),
               ListTile(
                 title: Row(
                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -166,10 +171,11 @@ class _CartPageState extends State<CartPage> {
                   ),
                 ),
               ),
-              Divider(
-                height: 60.0,
-                // color: Colors.yellow,
+              Container(
+                padding: EdgeInsets.only(right: 27, left: 31.0, top: 5, bottom: 5),
+                // color: Colors.red,
               ),
+              Divider(),
             ],
           ),
         ),

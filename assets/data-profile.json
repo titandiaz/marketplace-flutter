@@ -55,7 +55,7 @@
   "product" : [
     {
       "image" : "assets/Group7.png",
-      "price" : "129",
+      "price" : "$129",
       "name"  : "Crimson Swade",
       "color" : "White",
       "size"  : "XXL",
@@ -63,7 +63,7 @@
     },
     {
       "image" : "assets/Group8.png",
-      "price" : "129",
+      "price" : "$129",
       "name"  : "Crimson Swade",
       "color" : "White",
       "size"  : "XXL",

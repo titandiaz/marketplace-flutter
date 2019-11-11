@@ -6,6 +6,7 @@ class _MenuProvider {
 
   List<dynamic> opciones = [];
   List<dynamic> opcionesP = [];
+  List<dynamic> opcionesW = [];
 
   _MenuProvider() {
     // cargarData();
@@ -17,17 +18,7 @@ class _MenuProvider {
     Map dataMap = json.decode(resp);
     opciones = dataMap['data'];
 
-
     return opciones;
-
-      // .then( (data) {
-
-      //   Map dataMap = json.decode(data);
-      //   print( dataMap['rutas'] );
-      //   opciones = dataMap['rutas'];
-
-      // });
-
   }
 
   Future<List<dynamic>> cargarDataP() async {
@@ -36,17 +27,16 @@ class _MenuProvider {
     Map dataMap = json.decode(resp);
     opcionesP = dataMap['product'];
 
-
     return opcionesP;
+  }
 
-      // .then( (data) {
+  Future<List<dynamic>> cargarDataW() async {
 
-      //   Map dataMap = json.decode(data);
-      //   print( dataMap['rutas'] );
-      //   opciones = dataMap['rutas'];
+    final resp = await rootBundle.loadString('assets/data-profile.json');
+    Map dataMap = json.decode(resp);
+    opcionesW = dataMap['wishlist'];
 
-      // });
-
+    return opcionesW;
   }
 
 
@@ -55,3 +45,4 @@ class _MenuProvider {
 
 final menuProvider = new _MenuProvider();
 final menuProviderP = new _MenuProvider();
+final menuProviderW = new _MenuProvider();

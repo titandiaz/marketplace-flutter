@@ -39,7 +39,7 @@ class ProductosHorizontal extends StatelessWidget {
   }
 
   Widget _producto(BuildContext context, Producto producto){
-    return Container(
+    final tarjetaProducto = Container(
         margin: EdgeInsets.only(right: 20.0),
         child: Column(
           children: <Widget>[
@@ -61,6 +61,13 @@ class ProductosHorizontal extends StatelessWidget {
             )
           ],
         ),
+      );
+
+      return GestureDetector(
+        child: tarjetaProducto,
+        onTap: (){
+          print('nombre del producto: ${producto.nombre}');
+        },
       );
   }
 

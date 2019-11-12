@@ -46,7 +46,7 @@ class ProductosHorizontal extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(6.0),
               child: FadeInImage(
-                image: NetworkImage(producto.getFotoCloudinary()),
+                image: NetworkImage(producto.getFotoCloudinary('300')),
                 placeholder: AssetImage('assets/img/no-image.jpg'),
                 fit: BoxFit.cover,
                 height: 160.0,
@@ -66,7 +66,7 @@ class ProductosHorizontal extends StatelessWidget {
       return GestureDetector(
         child: tarjetaProducto,
         onTap: (){
-          print('nombre del producto: ${producto.nombre}');
+          Navigator.pushNamed(context, 'detalle', arguments: producto);
         },
       );
   }
@@ -80,7 +80,7 @@ class ProductosHorizontal extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(6.0),
               child: FadeInImage(
-                image: NetworkImage(producto.getFotoCloudinary()),
+                image: NetworkImage(producto.getFotoCloudinary('300')),
                 placeholder: AssetImage('assets/img/no-image.jpg'),
                 fit: BoxFit.cover,
                 height: 180.0,

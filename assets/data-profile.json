@@ -55,7 +55,7 @@
   "product" : [
     {
       "image" : "assets/Group7.png",
-      "price" : "129",
+      "price" : "$129",
       "name"  : "Crimson Swade",
       "color" : "White",
       "size"  : "XXL",
@@ -63,11 +63,51 @@
     },
     {
       "image" : "assets/Group8.png",
-      "price" : "129",
+      "price" : "$129",
       "name"  : "Crimson Swade",
       "color" : "White",
       "size"  : "XXL",
       "quanty": "2"
+    },
+    {
+      "image" : "assets/Group8.png",
+      "price" : "$129",
+      "name"  : "Crimson Swade",
+      "color" : "White",
+      "size"  : "XXL",
+      "quanty": "2"
+    }
+  ],
+  "wishlist" : [
+    {
+      "image" : "assets/Bitmap.png",
+      "name"  : "Beige Blazers",
+      "price"  : "$129"
+    },
+    {
+      "image" : "assets/Bitmap2.png",
+      "name"  : "Crimson Swade",
+      "price"  : "$129"
+    },
+    {
+      "image" : "assets/Bitmap3.png",
+      "name"  : "Denims",
+      "price"  : "$230"
+    },
+    {
+      "image" : "assets/Bitmap4.png",
+      "name"  : "Sweaters",
+      "price"  : "$150"
+    },
+    {
+      "image" : "assets/Bitmap5.png",
+      "name"  : "Beige Blazers",
+      "price"  : "$129"
+    },
+    {
+      "image" : "assets/Bitmap6.png",
+      "name"  : "Beige Blazers",
+      "price"  : "$129"
     }
   ]
 }

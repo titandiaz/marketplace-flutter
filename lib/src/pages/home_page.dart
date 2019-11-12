@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:peliculas/src/pages/cart_page.dart';
 import 'package:peliculas/src/pages/profile_page.dart';
+import 'package:peliculas/src/pages/wishlist_page.dart';
 import 'package:peliculas/src/providers/productos_provider.dart';
 import 'package:peliculas/src/widgets/banner_swiper_widget.dart';
 import 'package:peliculas/src/widgets/productos_horizontal.dart';
@@ -67,31 +68,28 @@ class _HomePageState extends State<HomePage> {
 
   Widget _callPage(BuildContext context, int paginaActual) {
     switch (paginaActual) {
-      case 0:
-        return Center(
-          child: ListView(
-            children: <Widget>[
-              _swiperBanner(),
-              _swiperProducts(context),
-              _swiperBanner(),
-            ],
-          ),
-        );
-      case 1:
-        return CartPage();
-      case 3:
-        return ProfilePage(user: widget.user);
-
-      default:
-        return Center(
-          child: ListView(
-            children: <Widget>[
-              _swiperBanner(),
-              _swiperProducts(context),
-              _swiperBanner(),
-            ],
-          ),
-        );
+      case 0: return Center(
+        child: ListView(
+          children: <Widget>[
+            _swiperBanner(),
+            _swiperProducts(context),
+            _swiperBanner(),
+          ],
+        ),
+      );
+      case 1 : return CartPage();
+      case 2 : return WishlistPage();
+      case 3 : return ProfilePage(user: widget.user);
+      
+      default: return Center(
+        child: ListView(
+          children: <Widget>[
+            _swiperBanner(),
+            _swiperProducts(context),
+            _swiperBanner(),
+          ],
+        ),
+      );
     }
   }
 

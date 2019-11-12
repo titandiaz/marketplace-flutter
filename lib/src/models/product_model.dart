@@ -21,10 +21,10 @@ class Producto {
   String foto;
   String fotoCloudinary;
   Tienda tienda;
-  List<Variante> variantes;
+  List<Map<String, dynamic>> variantes;
   List<FotosProducto> fotosProducto;
   dynamic categoriaProducto;
-  List<ProductoInfo> productoInfo;
+  List<Map<String, dynamic>> productoInfo;
 
   Producto({
     this.id,
@@ -46,17 +46,17 @@ class Producto {
     foto = json['foto'];
     fotoCloudinary = json['foto_cloudinary'];
     tienda = new Tienda.fromJsonMap(json['tienda']);
-    variantes = json['variantes'].cast<Variante>();
+    variantes = json['variantes'].cast<Map<String, dynamic>>();
     fotosProducto = json['fotos_producto'].cast<FotosProducto>();
     categoriaProducto = json['categoria_producto'];
-    productoInfo = json['producto_info'].cast<ProductoInfo>();
+    productoInfo = json['producto_info'].cast<Map<String, dynamic>>();
   }
-  getFotoCloudinary() {
+  getFotoCloudinary(String size) {
     if (fotoCloudinary == null) {
       return 'http://www.alterenterprise.com/wp-content/uploads/2014/02/Image-not-available_1.jpg';
     } else {
       return fotoCloudinary.replaceFirst(
-          new RegExp(r'upload'), 'upload/q_auto,c_scale,f_auto,w_300');
+          new RegExp(r'upload'), 'upload/q_auto,c_scale,f_auto,w_$size');
     }
   }
 }
@@ -91,6 +91,13 @@ class ProductoInfo {
     this.sku,
     this.inventario,
   });
+  ProductoInfo.fromJsonMap(Map<String, dynamic> json){
+    id = json['id'];
+    marca = json['marca'];
+    descripcion = json['descripcion'];
+    sku = json['sku'];
+    inventario = json['inventario'];
+  }
 }
 
 class Tienda {
@@ -128,6 +135,12 @@ class Variante {
     this.idProducto,
     this.combinaciones,
   });
+  Variante.fromJsonMap(Map<String, dynamic> json){
+    id = json['id'];
+    variantes = json['variantes'];
+    idProducto = json['idProducto'];
+    combinaciones = json['combinaciones'];
+  }
 }
 
 class Combinacione {

@@ -63,18 +63,18 @@
     },
     {
       "image" : "assets/Group8.png",
-      "price" : "$129",
-      "name"  : "Crimson Swade",
+      "price" : "$230",
+      "name"  : "Denims",
       "color" : "White",
       "size"  : "XXL",
-      "quanty": "2"
+      "quanty": "3"
     },
     {
       "image" : "assets/Group8.png",
-      "price" : "$129",
-      "name"  : "Crimson Swade",
-      "color" : "White",
-      "size"  : "XXL",
+      "price" : "$230",
+      "name"  : "Beige Blazers",
+      "color" : "Black",
+      "size"  : "XM",
       "quanty": "2"
     }
   ],

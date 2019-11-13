@@ -102,7 +102,7 @@ class _ProfilePageState extends State<ProfilePage> {
               // leading: Icon(Icons.account_circle, color: Colors.blue),
               trailing: Icon(Icons.keyboard_arrow_right, color: Colors.black, size: 30,),
               onTap: () {
-                
+                _signOut();
                 Navigator.pushNamed(context, opt['ruta'] );
 
               },
@@ -118,5 +118,8 @@ class _ProfilePageState extends State<ProfilePage> {
     return opciones;
   }
 
+   Future <ProfilePage> _signOut()  async{
+    await FirebaseAuth.instance.signOut();
 
+  }
 }

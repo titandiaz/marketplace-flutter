@@ -199,8 +199,9 @@ Widget _crearEmail(BuildContext context) {
         border: OutlineInputBorder(
           // gapPadding: 0.0,
           borderRadius: BorderRadius.circular(4)
-        )
+        ),
       ),
+      keyboardType: TextInputType.emailAddress,
     ),
   );
 

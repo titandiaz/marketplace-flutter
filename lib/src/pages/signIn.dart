@@ -170,6 +170,7 @@ Widget _crearEmail(BuildContext context) {
   return Padding(
     padding: EdgeInsets.only(bottom: 30, top: 30),
     child: TextFormField(
+      keyboardType: TextInputType.emailAddress,
       validator: (input) {
         if(input.isEmpty) {
           return 'Please type an email';
@@ -253,7 +254,7 @@ Widget _crearPassword(BuildContext context) {
       context: context,
       builder: ( context ) {
         return AlertDialog(
-          title: Text('Información incorrecta'),
+          title: Text('Dirección de correo electrónico o contraseña incorrectos.'),
           content: Text(mensaje),
           actions: <Widget>[
             FlatButton(

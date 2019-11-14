@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:peliculas/src/pages/cart_page.dart';
 import 'package:peliculas/src/pages/profile_page.dart';
+import 'package:peliculas/src/pages/profile_user_page.dart';
 import 'package:peliculas/src/pages/wishlist_page.dart';
 import 'package:peliculas/src/providers/productos_provider.dart';
 import 'package:peliculas/src/widgets/banner_swiper_widget.dart';
@@ -12,7 +13,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 class HomePage extends StatefulWidget {
   HomePage({@required this.user});
   final AuthResult user;
-
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -79,7 +79,8 @@ class _HomePageState extends State<HomePage> {
       );
       case 1 : return CartPage();
       case 2 : return WishlistPage();
-      case 3 : return ProfilePage(user: widget.user);
+      // case 3 : return ProfilePage(user: widget.user);
+      case 3 : return ProfileUserPage(user: widget.user);
       
       default: return Center(
         child: ListView(

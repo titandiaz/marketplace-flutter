@@ -240,12 +240,13 @@ Widget _crearPassword(BuildContext context) {
         AuthResult user = await FirebaseAuth.instance.signInWithEmailAndPassword( email: _email, password: _password );
         // Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage(user: user,)));
         Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(user: user,)));
+        print(user);
       } catch (e) {
         error = e.message;
         print(e.message);
       }
     } else {
-      mostrarAlerta( context, 'Los datos son incorrectos' );
+      mostrarAlerta( context, 'Dirección de correo electrónico o contraseña incorrectos.' );
     }
   }
 
@@ -254,7 +255,7 @@ Widget _crearPassword(BuildContext context) {
       context: context,
       builder: ( context ) {
         return AlertDialog(
-          title: Text('Dirección de correo electrónico o contraseña incorrectos.'),
+          title: Text('Los datos son incorrectos'),
           content: Text(mensaje),
           actions: <Widget>[
             FlatButton(

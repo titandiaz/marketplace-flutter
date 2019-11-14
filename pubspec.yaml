@@ -33,6 +33,7 @@ dependencies:
   mime_type:
   shared_preferences:
   flutter_html: ^0.11.0
+  cached_network_image: ^1.1.1
 
 dev_dependencies:
   flutter_test:

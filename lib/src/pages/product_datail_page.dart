@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:peliculas/src/models/product_model.dart';
 
-
 class ProductoDetalle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -17,6 +16,8 @@ class ProductoDetalle extends StatelessWidget {
               _nameProduct(context, producto),
               Divider(),
               _variantes(producto),
+              Divider(),
+              _addProduct(),
               Divider(),
               _description(producto)
             ]),
@@ -75,16 +76,16 @@ class ProductoDetalle extends StatelessWidget {
   Widget _nameProduct(BuildContext context, Producto producto) {
     return ListTile(
       title: Container(
-        margin: EdgeInsets.only(top: 20.0, left: 10.0),
+          margin: EdgeInsets.only(top: 20.0, left: 10.0),
           child: Text(
-        producto.nombre,
-        style: Theme.of(context).textTheme.subhead,
-      )),
+            producto.nombre,
+            style: Theme.of(context).textTheme.subhead,
+          )),
       onTap: () {},
       trailing: Icon(
-                const IconData(0xe808, fontFamily: 'MyFlutterApp'),
-                size: 20.0,
-              ),
+        const IconData(0xe808, fontFamily: 'MyFlutterApp'),
+        size: 20.0,
+      ),
       subtitle: Container(
         margin: EdgeInsets.only(top: 5.0, left: 10.0),
         child: Text(
@@ -96,7 +97,8 @@ class ProductoDetalle extends StatelessWidget {
   }
 
   Widget _variantes(Producto producto) {
-    if (producto.variantes.length != 0 && producto.variantes[0]['variantes'] != '[]') {
+    if (producto.variantes.length != 0 &&
+        producto.variantes[0]['variantes'] != '[]') {
       final List variantes = jsonDecode(producto.variantes[0]['variantes']);
       return _crearVariante(producto, variantes);
     } else {
@@ -106,18 +108,15 @@ class ProductoDetalle extends StatelessWidget {
 
   Widget _crearVariante(Producto producto, List variantes) {
     return SizedBox(
-      height: 160.0,
-      child: ListView.builder(
-        physics: NeverScrollableScrollPhysics(),
-        itemCount: variantes.length,
-        itemBuilder: (context, index) {
-          return _variante(variantes, index);
-        }
-      )
-    );
-    
+        height: 160.0,
+        child: ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: variantes.length,
+            itemBuilder: (context, index) {
+              return _variante(variantes, index);
+            }));
   }
-  
+
   Widget _variante(List variantes, int index) {
     List combinacion = [];
     return Container(
@@ -147,7 +146,7 @@ class ProductoDetalle extends StatelessWidget {
                     child: Container(
                       margin: const EdgeInsets.only(right: 20.0),
                       padding: const EdgeInsets.symmetric(
-                        vertical: 8.0, horizontal: 15.0),
+                          vertical: 8.0, horizontal: 15.0),
                       decoration: BoxDecoration(
                         border: Border.all(width: 1.0),
                         borderRadius: BorderRadius.all(Radius.circular(
@@ -167,20 +166,49 @@ class ProductoDetalle extends StatelessWidget {
   }
 
   Widget _description(Producto producto) {
-    if (producto.productoInfo[0]['descripcion'].runtimeType != Null ) {
+    if (producto.productoInfo[0]['descripcion'].runtimeType != Null) {
       return Container(
         margin: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
         child: SingleChildScrollView(
           child: Html(
             // data: """${producto.productoInfo[0]['descripcion']}""",
-            data: """${producto.productoInfo[0]['descripcion'].replaceAll(new RegExp(r'<br>'), '')}""",
+            data:
+                """${producto.productoInfo[0]['descripcion'].replaceAll(new RegExp(r'<br>'), '')}""",
             // padding: EdgeInsets.all(8.0),
             // backgroundColor: Colors.blueAccent,
           ),
         ),
-      );  
+      );
     } else {
       return Container();
     }
+  }
+
+  Widget _addProduct() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 10.0),
+      child: RaisedButton(
+          onPressed: () {},
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4.0),
+          ),
+          child: Container(
+            height: 50.0,
+            child: Center(
+              child: Text(
+                'Agregar al carrito',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.0,
+                  fontFamily: "SF Pro Display",
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ),
+          color: Color(0xFF323643),
+        ),
+    );
   }
 }

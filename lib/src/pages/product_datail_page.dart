@@ -3,10 +3,34 @@ import 'dart:convert';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:peliculas/src/models/product_model.dart';
 
-class ProductoDetalle extends StatelessWidget {
+class ProductoDetalle extends StatefulWidget {
+  @override
+  _ProductoDetalleState createState() => _ProductoDetalleState();
+}
+
+class _ProductoDetalleState extends State<ProductoDetalle> {
+  Color colorBorde = Colors.black;
+  String currentVariante;
+  List<String> nameVariantes = [];
+  List<List<String>> combinaciones = [];
   @override
   Widget build(BuildContext context) {
     final Producto producto = ModalRoute.of(context).settings.arguments;
+    var variantesDecode = jsonDecode(producto.variantes[0]['variantes']);
+    for (var i = 0; i < variantesDecode.length; i++) {
+      nameVariantes.add(variantesDecode[i]['nombre']);
+    }
+      
+    // for (var item in jsonDecode(producto.variantes[0]['variantes'])) {
+    //   nameVariantes.add(item['nombre']);
+    //   for (var option in item['valores']) {
+    //     combinaciones.add(item['nombre']);
+    //     // print(option['option']);
+    //     print(index);
+    //   }
+    // }
+    // print(nameVariantes);
+    // combinaciones = [producto.variantes[0]['nombre']];
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
@@ -118,7 +142,6 @@ class ProductoDetalle extends StatelessWidget {
   }
 
   Widget _variante(List variantes, int index) {
-    List combinacion = [];
     return Container(
       margin: EdgeInsets.only(left: 30.0),
       child: Column(
@@ -140,22 +163,55 @@ class ProductoDetalle extends StatelessWidget {
               itemBuilder: (context, i) {
                 return Center(
                   child: GestureDetector(
-                    onTap: () {
-                      print(variantes[0]['valores'][i]);
-                    },
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 20.0),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 8.0, horizontal: 15.0),
-                      decoration: BoxDecoration(
-                        border: Border.all(width: 1.0),
-                        borderRadius: BorderRadius.all(Radius.circular(
-                                4.0) //         <--- border radius here
+                      onTap: () {
+                        setState(() {
+                          if (index == 0) {
+                            // combinaciones.removeAt(1);
+                            // combinaciones.add(variantes[index]);
+                            // nameVariante1 = variantes[index];
+                          } else if(index == 1){
+                            // nameVariante2 = variantes[index]['nombre'];
+                            // currentVariante =
+                            //     variantes[0]['valores'][i]['option'];
+                          } else if(index == 2) {
+                            // nameVariante3 = variantes[index]['nombre'];
+                          }
+                        });
+                        print(variantes[index]['nombre']);
+                      },
+                      child: (() {
+                        if (
+                            currentVariante ==
+                                variantes[0]['valores'][i]['option']) {
+                          return Container(
+                            margin: const EdgeInsets.only(right: 20.0),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 15.0),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  width: 1.0, color: Colors.orange[900]),
+                              borderRadius: BorderRadius.all(Radius.circular(
+                                      4.0) //         <--- border radius here
+                                  ),
                             ),
-                      ),
-                      child: Text(variantes[0]['valores'][i]['option']),
-                    ),
-                  ),
+                            child: Text(variantes[0]['valores'][i]['option']),
+                          );
+                        } else {
+                          return Container(
+                            margin: const EdgeInsets.only(right: 20.0),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 15.0),
+                            decoration: BoxDecoration(
+                              border:
+                                  Border.all(width: 1.0, color: Colors.black),
+                              borderRadius: BorderRadius.all(Radius.circular(
+                                      4.0) //         <--- border radius here
+                                  ),
+                            ),
+                            child: Text(variantes[0]['valores'][i]['option']),
+                          );
+                        }
+                      }())),
                 );
               },
             ),
@@ -188,27 +244,27 @@ class ProductoDetalle extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 10.0),
       child: RaisedButton(
-          onPressed: () {},
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(4.0),
-          ),
-          child: Container(
-            height: 50.0,
-            child: Center(
-              child: Text(
-                'Agregar al carrito',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16.0,
-                  fontFamily: "SF Pro Display",
-                  fontWeight: FontWeight.w600,
-                ),
+        onPressed: () {},
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4.0),
+        ),
+        child: Container(
+          height: 50.0,
+          child: Center(
+            child: Text(
+              'Agregar al carrito',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.0,
+                fontFamily: "SF Pro Display",
+                fontWeight: FontWeight.w600,
               ),
             ),
           ),
-          color: Color(0xFF323643),
         ),
+        color: Color(0xFF323643),
+      ),
     );
   }
 }
